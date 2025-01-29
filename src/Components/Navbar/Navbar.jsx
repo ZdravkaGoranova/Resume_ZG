@@ -1,9 +1,9 @@
-
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 
+import Home from '../../Components/Home/Home.jsx';
 
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
@@ -77,6 +77,7 @@ function DemoPageContent({ pathname }) {
       }}
     >
       <Typography>Dashboard content for {pathname}</Typography>
+      <Home></Home>
     </Box>
   );
 }
@@ -85,7 +86,7 @@ DemoPageContent.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-function DashboardLayoutBranding(props) {
+function Navbar(props) {
   const { window } = props;
 
   const router = useDemoRouter('/dashboard');
@@ -115,7 +116,7 @@ function DashboardLayoutBranding(props) {
   );
 }
 
-DashboardLayoutBranding.propTypes = {
+Navbar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * Remove this when copying and pasting into your project.
@@ -123,12 +124,5 @@ DashboardLayoutBranding.propTypes = {
   window: PropTypes.func,
 };
 
-export default DashboardLayoutBranding;
+export default Navbar;
 
-// export default function Navbar() {
-
-//    return (
-//     <>
-//     </>
-//    )
-// }
