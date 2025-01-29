@@ -1,0 +1,21 @@
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+
+
+:root {
+   
+    --black-color: #1f242d;
+    --green-color: #7cf03d;
+    --yellow-color: #ffbf00;
+    --white-color: #fff;
+
+    --p-font: 1.4rem;
+    --big-font: 5rem;
+}
+
+.logo span{
+    color: var(--yellow-color);
+}
