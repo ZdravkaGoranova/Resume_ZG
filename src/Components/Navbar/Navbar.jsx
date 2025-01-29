@@ -2,11 +2,8 @@ import '../../App.css';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-
-import { useTheme } from '@mui/material/styles';
-import { createTheme } from '@mui/material/styles';
-
-import Home from '../../Components/Home/Home.jsx';
+import { useContext } from 'react';
+import { ThemeContext } from '../../ThemeContext';
 
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
@@ -19,55 +16,18 @@ import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
 
-
 const NAVIGATION = [
-  {
-    segment: 'home',
-    title: 'Home',
-    icon: <HomeRoundedIcon />,
-  },
-  {
-    segment: 'about',
-    title: 'About',
-    icon: <PersonRoundedIcon />,
-  },
-  {
-    segment: 'education',
-    title: 'Education',
-    icon: <SchoolRoundedIcon />,
-  },
-  {
-    segment: 'skills',
-    title: 'Skills',
-    icon: <SettingsRoundedIcon />,
-  },
+  { segment: 'home', title: 'Home', icon: <HomeRoundedIcon /> },
+  { segment: 'about', title: 'About', icon: <PersonRoundedIcon /> },
+  { segment: 'education', title: 'Education', icon: <SchoolRoundedIcon /> },
+  { segment: 'skills', title: 'Skills', icon: <SettingsRoundedIcon /> },
   {
     segment: 'projects',
     title: 'Projects',
     icon: <FolderSpecialRoundedIcon />,
   },
-  {
-    segment: 'contact',
-    title: 'Contact',
-    icon: <LocalPhoneRoundedIcon />,
-  },
+  { segment: 'contact', title: 'Contact', icon: <LocalPhoneRoundedIcon /> },
 ];
-
-const demoTheme = createTheme({
-  cssVariables: {
-    colorSchemeSelector: 'data-toolpad-color-scheme',
-  },
-  colorSchemes: { light: true, dark: true },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
-});
 
 function DemoPageContent({ pathname }) {
   return (
@@ -81,7 +41,6 @@ function DemoPageContent({ pathname }) {
       }}
     >
       <Typography>Dashboard content for {pathname}</Typography>
-      <Home></Home>
     </Box>
   );
 }
@@ -94,8 +53,7 @@ function Navbar(props) {
   const { window } = props;
   const router = useDemoRouter('/');
   const demoWindow = window !== undefined ? window() : undefined;
-
-  const theme = useTheme();
+  const { mode, toggleTheme } = useContext(ThemeContext);
 
   return (
     <AppProvider
@@ -104,23 +62,46 @@ function Navbar(props) {
         logo: (
           <Typography
             sx={{
-              color: theme.palette.secondary.main,
               fontWeight: 'bold',
               fontSize: '1.5rem',
+              display: 'inline-block',
+              color: mode === 'light' ? '#797979' : '#fff',
             }}
           >
-            PortfolioZG
+            <span style={{ color: '#FFBF00', fontWeight: 'bold' }}>P</span>
+            ortfolio
+            <span style={{ color: '#FFBF00', fontWeight: 'bold' }}>Z</span>G
           </Typography>
         ),
-
         title: '',
         homeUrl: '/',
       }}
       router={router}
-      theme={demoTheme}
       window={demoWindow}
     >
       <DashboardLayout>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            padding: '10px',
+          }}
+        >
+          <button
+            onClick={toggleTheme}
+            style={{
+              backgroundColor: mode === 'light' ? '#FFBF00' : '#444',
+              color: mode === 'light' ? '#000' : '#fff',
+              padding: '8px 16px',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+            }}
+          >
+            {mode === 'light' ? '🌙 Dark Mode' : '☀ Light Mode'}
+          </button>
+        </Box>
         <DemoPageContent pathname={router.pathname} />
       </DashboardLayout>
     </AppProvider>
