@@ -30,7 +30,7 @@ import Education from './Components/Education/Education.jsx';
 
 function App(props) {
   const { window } = props;
-  // const router = useDemoRouter('/');
+  
   const router = null;
   const demoWindow = window !== undefined ? window() : undefined;
   const navigate = useNavigate();
@@ -41,19 +41,19 @@ function App(props) {
     { kind: 'header', title: 'Main items' },
     {
       title: 'Home',
-      segment: 'home',
+      segment: ' ',
       icon: <HomeRoundedIcon />,
-      component: Link,
-      to: '/',
+      onClick: () => navigate('/'),
     },
     { kind: 'header', title: 'More information' },
     {
       title: 'About',
       segment: 'about',
       icon: <PersonRoundedIcon />,
-      // component: Link,
-      // to: '/about',
-      onClick: () => navigate('/about'),
+      component: Link,
+      to: '/about',
+      // homeUrl: '/about',
+      // onClick: () => navigate('/about'),
     },
     {
       title: 'Education',
