@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-export default function About() {
+export default function Skills() {
   return (
     <>
-      <h1>About</h1>
+      <h1>Skills</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem tempora
         consectetur cupiditate temporibus aliquid sint nostrum voluptatem, ut
