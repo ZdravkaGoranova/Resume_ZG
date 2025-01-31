@@ -30,7 +30,7 @@ import Education from './Components/Education/Education.jsx';
 
 function App(props) {
   const { window } = props;
-  
+
   const router = null;
   const demoWindow = window !== undefined ? window() : undefined;
   const navigate = useNavigate();
@@ -43,41 +43,51 @@ function App(props) {
       title: 'Home',
       segment: ' ',
       icon: <HomeRoundedIcon />,
-      onClick: () => navigate('/'),
+      // component: Link,
+      // to: '/',
+      homeUrl: '/',
     },
     { kind: 'header', title: 'More information' },
     {
       title: 'About',
       segment: 'about',
       icon: <PersonRoundedIcon />,
-      component: Link,
-      to: '/about',
-      // homeUrl: '/about',
+      // component: Link,
+      // to: '/about',
+      homeUrl: '/about',
       // onClick: () => navigate('/about'),
     },
     {
       title: 'Education',
       segment: 'education',
       icon: <SchoolRoundedIcon />,
-      onClick: () => navigate('/education'),
+      // component: Link,
+      // to: '/education',
+      homeUrl: '/education',
     },
     {
       title: 'Skills',
       segment: 'skills',
       icon: <SettingsRoundedIcon />,
-      onClick: () => navigate('/skills'),
+      // component: Link,
+      // to: '/skills',
+      homeUrl: '/skills',
     },
     {
       title: 'Projects',
       segment: 'projects',
       icon: <FolderSpecialRoundedIcon />,
-      onClick: () => navigate('/projects'),
+      // component: Link,
+      // to: '/projects',
+      homeUrl: '/projects',
     },
     {
       segment: 'contact',
       title: 'Contact',
       icon: <LocalPhoneRoundedIcon />,
-      onClick: () => navigate('/contact'),
+      // component: Link,
+      // to: '/contact',
+      homeUrl: '/contact',
     },
   ];
 
