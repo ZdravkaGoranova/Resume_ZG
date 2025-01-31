@@ -1,9 +1,12 @@
 import '../../App.css';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
+
 import Typography from '@mui/material/Typography';
 import { useContext } from 'react';
+
 import { ThemeContext } from '../../ThemeContext';
+import CustomThemeSwitcher from '../CustomThemeSwitcher/CustomThemeSwitcher.jsx';
 
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
@@ -17,7 +20,15 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
 
 const NAVIGATION = [
+  {
+    kind: 'header',
+    title: 'Main items',
+  },
   { segment: 'home', title: 'Home', icon: <HomeRoundedIcon /> },
+  {
+    kind: 'header',
+    title: 'More information',
+  },
   { segment: 'about', title: 'About', icon: <PersonRoundedIcon /> },
   { segment: 'education', title: 'Education', icon: <SchoolRoundedIcon /> },
   { segment: 'skills', title: 'Skills', icon: <SettingsRoundedIcon /> },
@@ -53,7 +64,8 @@ function Navbar(props) {
   const { window } = props;
   const router = useDemoRouter('/');
   const demoWindow = window !== undefined ? window() : undefined;
-  const { mode, toggleTheme } = useContext(ThemeContext);
+
+  const { mode } = useContext(ThemeContext);
 
   return (
     <AppProvider
@@ -79,30 +91,20 @@ function Navbar(props) {
       router={router}
       window={demoWindow}
     >
-      <DashboardLayout>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            padding: '10px',
-          }}
-        >
-          <button
-            onClick={toggleTheme}
-            style={{
-              backgroundColor: mode === 'light' ? '#FFBF00' : '#444',
-              color: mode === 'light' ? '#000' : '#fff',
-              padding: '8px 16px',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-            }}
-          >
-            {mode === 'light' ? '🌙 Dark Mode' : '☀ Light Mode'}
-          </button>
-        </Box>
+      <DashboardLayout
+        slots={{
+          toolbarActions: CustomThemeSwitcher,
+        }}
+      >
         <DemoPageContent pathname={router.pathname} />
+
+        {/* <iframe
+          title="Google Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799181496!2d-74.25987571760744!3d40.69767006358627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af18b60165%3A0x8b621f8a7a7d28a4!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1633452834502!5m2!1sen!2s"
+          style={{ flex: 1, border: 0 }}
+          allowFullScreen
+          loading="lazy"
+        /> */}
       </DashboardLayout>
     </AppProvider>
   );
