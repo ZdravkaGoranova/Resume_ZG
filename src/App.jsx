@@ -1,15 +1,20 @@
 import './App.css';
+import { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { AppProvider } from '@toolpad/core/AppProvider';
+import { DashboardLayout } from '@toolpad/core/DashboardLayout';
+
+import { useEffect, useState } from 'react';
+import { getData } from './api.js';
+
 
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import { useContext } from 'react';
 import { ThemeContext } from './ThemeContext.jsx';
-import { Routes, Route, Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
@@ -30,12 +35,10 @@ import Education from './Components/Education/Education.jsx';
 
 function App(props) {
   const { window } = props;
-
   const router = null;
   const demoWindow = window !== undefined ? window() : undefined;
-  const navigate = useNavigate();
-
   const { mode } = useContext(ThemeContext);
+ const [data, setData] = useState(null);
 
   const NAVIGATION = [
     { kind: 'header', title: 'Main items' },
@@ -43,8 +46,6 @@ function App(props) {
       title: 'Home',
       segment: ' ',
       icon: <HomeRoundedIcon />,
-      // component: Link,
-      // to: '/',
       homeUrl: '/',
     },
     { kind: 'header', title: 'More information' },
@@ -52,44 +53,42 @@ function App(props) {
       title: 'About',
       segment: 'about',
       icon: <PersonRoundedIcon />,
-      // component: Link,
-      // to: '/about',
       homeUrl: '/about',
-      // onClick: () => navigate('/about'),
     },
     {
       title: 'Education',
       segment: 'education',
       icon: <SchoolRoundedIcon />,
-      // component: Link,
-      // to: '/education',
       homeUrl: '/education',
     },
     {
       title: 'Skills',
       segment: 'skills',
       icon: <SettingsRoundedIcon />,
-      // component: Link,
-      // to: '/skills',
       homeUrl: '/skills',
     },
     {
       title: 'Projects',
       segment: 'projects',
       icon: <FolderSpecialRoundedIcon />,
-      // component: Link,
-      // to: '/projects',
       homeUrl: '/projects',
     },
     {
       segment: 'contact',
       title: 'Contact',
       icon: <LocalPhoneRoundedIcon />,
-      // component: Link,
-      // to: '/contact',
       homeUrl: '/contact',
     },
   ];
+
+useEffect(() => {
+  getData().then((fetchedData) => {
+    console.log('Fetched Data:', fetchedData); 
+    setData(fetchedData);
+  });
+}, []);
+
+console.log('Current Data:', data); 
 
   return (
     <AppProvider
@@ -119,6 +118,7 @@ function App(props) {
         slots={{
           toolbarActions: CustomThemeSwitcher,
         }}
+        drawerPosition="right"
       >
         <Box
           sx={{
@@ -129,6 +129,10 @@ function App(props) {
             textAlign: 'center',
           }}
         >
+          <div>
+            <h1>MongoDB Connected</h1>
+            <p>{data ? JSON.stringify(data) : 'Loading...'}</p>
+          </div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
