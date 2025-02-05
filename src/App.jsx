@@ -7,7 +7,6 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useEffect, useState } from 'react';
 import { getData } from './api.js';
 
-
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -38,7 +37,7 @@ function App(props) {
   const router = null;
   const demoWindow = window !== undefined ? window() : undefined;
   const { mode } = useContext(ThemeContext);
- const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
 
   const NAVIGATION = [
     { kind: 'header', title: 'Main items' },
@@ -81,14 +80,14 @@ function App(props) {
     },
   ];
 
-useEffect(() => {
-  getData().then((fetchedData) => {
-    console.log('Fetched Data:', fetchedData); 
-    setData(fetchedData);
-  });
-}, []);
+  useEffect(() => {
+    getData().then((fetchedData) => {
+      console.log('Fetched Data:', fetchedData);
+      setData(fetchedData);
+    });
+  }, []);
 
-console.log('Current Data:', data); 
+  console.log('Current Data:', data);
 
   return (
     <AppProvider
@@ -129,23 +128,24 @@ console.log('Current Data:', data);
             textAlign: 'center',
           }}
         >
-          <div>
+          {/* <div>
             <h1>MongoDB Connected</h1>
             <p>{data ? JSON.stringify(data) : 'Loading...'}</p>
-          </div>
+          </div> */}
+
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/education" element={<Education />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Home data={data} />} />
+            <Route path="/about" element={<About data={data} />} />
+            <Route path="/projects" element={<Projects data={data} />} />
+            <Route path="/contact" element={<Contact data={data} />} />
+            <Route path="/education" element={<Education data={data} />} />
+            <Route path="/skills" element={<Skills data={data} />} />
+            <Route path="*" element={<NotFound data={data} />} />
           </Routes>
         </Box>
       </DashboardLayout>
 
-      <Footer />
+      <Footer data={data} />
     </AppProvider>
   );
 }

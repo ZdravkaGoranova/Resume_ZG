@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext';
-
+import PropTypes from 'prop-types';
 import {
   Box,
   Typography,
@@ -10,10 +10,10 @@ import {
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { RiMailSendLine } from 'react-icons/ri';
 
-const Footer = () => {
+const Footer = ({ data }) => {
   const { mode } = useContext(ThemeContext);
   const isDarkMode = mode === 'dark';
-
+  const userData = data?.data?.[0] || {};
   return (
     <footer>
       <Box
@@ -40,7 +40,7 @@ const Footer = () => {
               label="Github"
               icon={<FaGithub />}
               component="a"
-              href="https://github.com/ZdravkaGoranova"
+              href={userData?.contacts?.github}
               target="_blank"
               rel="noopener noreferrer"
             />
@@ -49,14 +49,14 @@ const Footer = () => {
               label="Mail"
               icon={<RiMailSendLine />}
               component="a"
-              href="mailto:zdravka.p.goranova@gmail.com"
+              href={`mailto:${userData?.contacts?.mail}`}
             />
 
             <BottomNavigationAction
               label="LinkedIn"
               icon={<FaLinkedin />}
               component="a"
-              href="https://www.linkedin.com/in/zdravka-goranova/"
+              href={userData?.contacts?.linkedin}
               target="_blank"
               rel="noopener noreferrer"
             />
@@ -83,3 +83,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
+Footer.propTypes = {
+  data: PropTypes.any,
+};
