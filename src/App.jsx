@@ -122,10 +122,12 @@ function App(props) {
         <Box
           sx={{
             py: 5,
+            px: { xs: 2, sm: 5, md: 10 },
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             textAlign: 'center',
+            width: '100%',
           }}
         >
           {/* <div>
