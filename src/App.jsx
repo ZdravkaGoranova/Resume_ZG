@@ -82,7 +82,6 @@ function App(props) {
 
   useEffect(() => {
     getData().then((fetchedData) => {
-      console.log('Fetched Data:', fetchedData);
       setData(fetchedData);
     });
   }, []);
