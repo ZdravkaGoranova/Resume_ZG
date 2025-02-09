@@ -32,8 +32,8 @@ export default function Home({ data }) {
         alt="Zdravka Goranova"
         src="/image-zdravka-goranova.png"
         sx={{
-          width: 200,
-          height: 200,
+          width: 350,
+          height: 350,
           borderRadius: '50%',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
           border: '3px solid #ffc134',
