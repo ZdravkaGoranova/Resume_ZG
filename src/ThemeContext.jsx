@@ -35,7 +35,8 @@ const getTheme = (mode) =>
   });
 
 export const ThemeProviderComponent = ({ children }) => {
-  const [mode, setMode] = useState(localStorage.getItem('theme') || 'dark');
+const [mode, setMode] = useState(localStorage.getItem('theme') || 'dark');
+
 
   useEffect(() => {
     document.documentElement.setAttribute('data-toolpad-color-scheme', mode);
