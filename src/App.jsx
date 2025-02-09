@@ -10,8 +10,6 @@ import { getData } from './api.js';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
 import { ThemeContext } from './ThemeContext.jsx';
 
