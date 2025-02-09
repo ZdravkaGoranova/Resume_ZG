@@ -1,4 +1,5 @@
 import React from 'react'
+import ProjectCard from '../ProjectCard/ProjectCard.jsx';
 
 export default function Projects() {
   return (
@@ -10,6 +11,7 @@ export default function Projects() {
         unde quos magnam, dolorum harum voluptate eum sequi quam aut? Deleniti,
         maiores.
       </p>
+      <ProjectCard/>
     </>
   );
 }
