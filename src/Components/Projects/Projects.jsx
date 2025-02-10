@@ -36,6 +36,7 @@ export default function Projects({ data }) {
                         linkGithub={project.linkGithub}
                         linkLive={project.linkLive}
                         image={project.image}
+                        info={project.info}
                       />
                     </Paper>
                   </Grid>
