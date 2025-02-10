@@ -35,13 +35,24 @@ const getTheme = (mode) =>
   });
 
 export const ThemeProviderComponent = ({ children }) => {
-const [mode, setMode] = useState(localStorage.getItem('theme') || 'dark');
-
+  const [mode, setMode] = useState(null);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-toolpad-color-scheme', mode);
-    localStorage.setItem('theme', mode);
+    const savedTheme = localStorage.getItem('theme') || 'dark'; // Взимаме темата от localStorage
+    setMode(savedTheme);
+    document.documentElement.setAttribute(
+      'data-toolpad-color-scheme',
+      savedTheme,
+    );
+  }, []);
+
+  useEffect(() => {
+    if (mode) {
+      document.documentElement.setAttribute('data-toolpad-color-scheme', mode);
+      localStorage.setItem('theme', mode);
+    }
   }, [mode]);
+
 
   const toggleTheme = () => {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));

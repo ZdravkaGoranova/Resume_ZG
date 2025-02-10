@@ -27,6 +27,7 @@ export default function Home({ data }) {
         py: 2,
         px: 3,
       }}
+   
     >
       <Avatar
         alt="Zdravka Goranova"
