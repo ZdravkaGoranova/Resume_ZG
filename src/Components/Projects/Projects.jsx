@@ -15,7 +15,9 @@ export default function Projects({ data }) {
     <>
       <Box display="flex" flexDirection="column" alignItems="center">
         <Box mb={3}>
-          <h1>PERSONAL PROJECTS</h1>
+          <h1>
+            PERSONAL <span style={{ color: '#ffc134' }}>PROJECTS</span>
+          </h1>
         </Box>
 
         <Grid
