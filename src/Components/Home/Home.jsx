@@ -27,7 +27,6 @@ export default function Home({ data }) {
         py: 2,
         px: 3,
       }}
-   
     >
       <Avatar
         alt="Zdravka Goranova"
@@ -60,24 +59,34 @@ export default function Home({ data }) {
           sx={{
             color: isDarkMode ? 'white' : '#333',
             fontWeight: 'bold',
+            fontFamily: 'Russo One, sans-serif',
           }}
         >
-          Hello, It&apos;s ME
+          Hello, It&apos;s me
         </Typography>
+
         <Typography
           variant="h2"
           sx={{
-            color: isDarkMode ? 'white' : '#222',
             fontWeight: 'bold',
+            fontFamily: 'Russo One, sans-serif',
+            // lineHeight:'60px'
           }}
         >
-          {userData?.name || 'Loading...'}
+          <span style={{ color: '#ffc134' }}>
+            {userData?.name?.slice(0, 7) || 'Loading...'}
+          </span>
+          <span style={{ color: 'white' }}>
+            {userData?.name?.slice(7) || ''}
+          </span>
         </Typography>
+
         <Typography
           variant="h4"
           sx={{
             color: isDarkMode ? 'white' : '#666',
             fontStyle: 'italic',
+            fontFamily: 'Russo One, sans-serif',
           }}
         >
           I&apos;m a{' '}
@@ -92,11 +101,11 @@ export default function Home({ data }) {
             color: isDarkMode ? 'white' : '#555',
             mt: 1,
             textAlign: 'justify',
+            lineHeight: '30px',
           }}
         >
           {userData?.principalInfo || 'Loading...'}
         </Typography>
-
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           spacing={2}
