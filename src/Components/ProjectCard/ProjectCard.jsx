@@ -45,8 +45,37 @@ export default function ProjectCard({
   info = Array.isArray(info) ? info : [];
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader title={name} />
+    <Card
+      sx={{
+        maxWidth: 345,
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        '&:hover': {
+          transform: 'scale(1.05)',
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',
+        },
+      }}
+    >
+      <CardHeader
+        title={
+          <Typography
+            variant="h6"
+            sx={{
+              fontFamily: 'Russo One, sans-serif',
+              fontWeight: 'bold',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '300px',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                color: '#ffc134',
+              },
+            }}
+          >
+            {name}
+          </Typography>
+        }
+      />
       <CardMedia component="img" height="194" image={image} alt={name} />
       <CardContent>
         <Typography
