@@ -37,9 +37,18 @@ export default function ProjectCard({
   info,
 }) {
   const [expanded, setExpanded] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleImageError = () => {
+    setIsLoading(false); 
   };
 
   info = Array.isArray(info) ? info : [];
@@ -76,7 +85,35 @@ export default function ProjectCard({
           </Typography>
         }
       />
-      <CardMedia component="img" height="194" image={image} alt={name} />
+
+      {isLoading && (
+        <Typography
+          sx={{
+            textAlign: 'center',
+            fontSize: '18px',
+            fontWeight: 'bold',
+            color: '#aaa',
+            height: '194px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#f5f5f5',
+          }}
+        >
+          Loading...
+        </Typography>
+      )}
+      <CardMedia
+        component="img"
+        height="194"
+        image={image || 'https://via.placeholder.com/345x194?text=No+Image'}
+        alt={name}
+        onLoad={handleImageLoad}
+        onError={handleImageError}
+        sx={{
+          display: isLoading ? 'none' : 'block',
+        }}
+      />
       <CardContent>
         <Typography
           variant="body2"
