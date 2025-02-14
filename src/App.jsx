@@ -96,6 +96,8 @@ function App(props) {
               fontSize: '1.5rem',
               display: 'inline-block',
               color: mode === 'light' ? '#797979' : '#fff',
+              fontFamily: 'Russo One, sans-serif',
+              letterSpacing:'1px'
             }}
           >
             <span style={{ color: '#FFBF00', fontWeight: 'bold' }}>P</span>
