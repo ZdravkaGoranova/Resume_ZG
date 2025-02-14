@@ -45,7 +45,7 @@ export default function Projects({ data }) {
                 ),
             )
           ) : (
-            <p>No projects found.</p>
+            <h2>No projects found.</h2>
           )}
         </Grid>
       </Box>

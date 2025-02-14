@@ -18,7 +18,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import PropTypes from 'prop-types';
 
 const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
+  const {  ...other } = props;
   return <IconButton {...other} />;
 })(({ theme }) => ({
   marginLeft: 'auto',
