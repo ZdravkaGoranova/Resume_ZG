@@ -16,11 +16,11 @@ const getTheme = (mode) =>
         main: mode === 'light' ? '#FFBF00' : '#FFBF00',
       },
       background: {
-        default: mode === 'light' ? '#ffffff' : '#121212',
-        paper: mode === 'light' ? '#ffffff' : '#1e1e1e',
+        default: mode === 'light' ? '#ffffff' : '#000103',
+        paper: mode === 'light' ? '#ffffff' : '#000103',
       },
       text: {
-        primary: mode === 'light' ? '#121212' : '#ffffff',
+        primary: mode === 'light' ? '#000103' : '#ffffff',
       },
     },
     breakpoints: {
@@ -38,7 +38,7 @@ export const ThemeProviderComponent = ({ children }) => {
   const [mode, setMode] = useState(null);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'dark'; // Взимаме темата от localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark'; 
     setMode(savedTheme);
     document.documentElement.setAttribute(
       'data-toolpad-color-scheme',
