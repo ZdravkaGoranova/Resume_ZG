@@ -119,7 +119,7 @@ button:focus-visible {
 
 .b-slider__slide {
   flex: 0 0 auto;
-  width: 200px; /* Регулирай размера според нуждите */
+  width: 200px; 
   margin-right: 20px;
 }
 
