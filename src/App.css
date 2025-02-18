@@ -45,11 +45,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  
-}
-body {
   font-family: 'Russo One', sans-serif !important;
 }
+
 
 h1 {
   font-size: 3.2em;
@@ -111,4 +109,21 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.b-slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.b-slider__slide {
+  flex: 0 0 auto;
+  width: 200px; /* Регулирай размера според нуждите */
+  margin-right: 20px;
+}
+
+.b-slider__img {
+  max-width: 100%;
+  height: auto;
 }
