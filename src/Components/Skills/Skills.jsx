@@ -1,74 +1,162 @@
-import { useEffect, useRef, useCallback } from 'react';
-import Flickity from 'flickity';
-import 'flickity/css/flickity.css';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid2';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Typography from '@mui/material/Typography';
 
+// MUI Icons
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import ChatIcon from '@mui/icons-material/Chat';
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import GroupsIcon from '@mui/icons-material/Groups';
+import CodeIcon from '@mui/icons-material/Code';
+import BuildIcon from '@mui/icons-material/Build';
+import CloudIcon from '@mui/icons-material/Cloud';
+import StorageIcon from '@mui/icons-material/Storage';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
-export default function Skills() {
-  const sliderRef = useRef(null);
-  let requestId = useRef(null);
-  let flickityInstance = useRef(null);
+const softSkillIcons = {
+  'Logical and Algorithmic Thinking': (
+    <PsychologyIcon sx={{ color: '#ffb300' }} />
+  ),
+  'Problem Solving': <LightbulbIcon sx={{ color: '#ffb300' }} />,
+  'Communication skills': <ChatIcon sx={{ color: '#ffb300' }} />,
+  'Self-motivated': <SelfImprovementIcon sx={{ color: '#ffb300' }} />,
+  'Ability to quickly learn': <TipsAndUpdatesIcon sx={{ color: '#ffb300' }} />,
+  'Attention to details': <VisibilityIcon sx={{ color: '#ffb300' }} />,
+  Teamwork: <GroupsIcon sx={{ color: '#ffb300' }} />,
+};
 
-  // Запазваме функцията в useCallback, за да не я засича useEffect като "променяща се"
-  const startMarquee = useCallback(() => {
-    if (flickityInstance.current) {
-      flickityInstance.current.x -= 1.5; // Регулирай скоростта тук
-      flickityInstance.current.settle(flickityInstance.current.x);
-      requestId.current = requestAnimationFrame(startMarquee);
-    }
-  }, []);
-
-  // Спиране на анимацията при hover
-  const stopMarquee = useCallback(() => {
-    cancelAnimationFrame(requestId.current);
-    requestId.current = null;
-  }, []);
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      flickityInstance.current = new Flickity(sliderRef.current, {
-        freeScroll: true,
-        wrapAround: true,
-        prevNextButtons: false,
-        pageDots: false,
-        autoPlay: false,
-        contain: true,
-      });
-
-      startMarquee(); // Стартираме ефекта
-
-      sliderRef.current.addEventListener('mouseenter', stopMarquee);
-      sliderRef.current.addEventListener('mouseleave', startMarquee);
-    }
-
-    return () => {
-      if (flickityInstance.current) {
-        flickityInstance.current.destroy();
-      }
-      cancelAnimationFrame(requestId.current);
-    };
-  }, [startMarquee, stopMarquee]); // Добавяме само useCallback функции
+export default function Skills({ data }) {
+  const userData = data?.data?.[0] || {};
+  const softSkills = userData?.softSkills || [];
+  const technicalSkills = userData?.technicalSkills?.[0] || {};
 
   return (
-    <div>
-      <h1>Skills</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        maiores, mollitia blanditiis ratione autem repellendus consequuntur.
-      </p>
-      <div className="carousel" ref={sliderRef}>
-        {[
-          'https://cdn.shopify.com/s/files/1/0789/1333/files/Forbes.svg?v=1593719066',
-          'https://cdn.shopify.com/s/files/1/0789/1333/files/Nat_Geo.svg?v=1593719066',
-          'https://cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross.svg?v=1593719066',
-          'https://cdn.shopify.com/s/files/1/0789/1333/files/Discovery_Channel.svg?v=1593719066',
-          'https://cdn.shopify.com/s/files/1/0789/1333/files/REI.svg?v=1593719066',
-          'https://cdn.shopify.com/s/files/1/0789/1333/files/Fortune.svg?v=1593719066',
-        ].map((imgSrc, index) => (
-          <div className="carousel-cell" key={index}>
-            <img src={imgSrc} alt={`Logo ${index}`} />
-          </div>
-        ))}
-      </div>
-    </div>
+    <Box sx={{ maxWidth: 1000, mx: 'auto', p: 3 }}>
+      <Box mb={3}>
+        <h1>
+          S<span style={{ color: '#ffc134' }}>kills</span>
+        </h1>
+      </Box>
+      <Grid container spacing={4}>
+        {/* Soft Skills */}
+        <Grid item xs={12} md={6}>
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: 'bold',
+              color: '#ffc134',
+              mb: 2,
+              fontFamily: 'Russo One, sans-serif',
+            }}
+          >
+            Soft Skills
+          </Typography>
+          <List>
+            {softSkills.map((skill, index) => (
+              <React.Fragment key={index}>
+                <ListItem
+                  sx={{
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 179, 0, 0.3)',
+                      transform: 'scale(1.05)',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    },
+                  }}
+                >
+                  <ListItemIcon>
+                    {softSkillIcons[skill] || <PsychologyIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={skill} />
+                </ListItem>
+                {index < softSkills.length - 1 && <Divider />}
+              </React.Fragment>
+            ))}
+          </List>
+        </Grid>
+
+        {/* Technical Skills */}
+        <Grid item xs={12} md={6}>
+          <Typography
+            variant="h5"
+            sx={{
+              fontWeight: 'bold',
+              color: '#ffc134',
+              mb: 2,
+              fontFamily: 'Russo One, sans-serif',
+            }}
+          >
+            Technical Skills
+          </Typography>
+          <List>
+            {Object.entries(technicalSkills).map(
+              ([category, skills], index) => {
+                const skillCategory = category.trim();
+                const icon = {
+                  'Programming Languages': (
+                    <CodeIcon sx={{ color: '#ffb300' }} />
+                  ),
+                  ' Tools': <BuildIcon sx={{ color: '#ffb300' }} />,
+                  'Version control systems': (
+                    <GitHubIcon sx={{ color: '#ffb300' }} />
+                  ),
+                  Library: <LibraryBooksIcon sx={{ color: '#ffb300' }} />,
+                  ' Databases': <StorageIcon sx={{ color: '#ffb300' }} />,
+                  'Cloud Technologies': <CloudIcon sx={{ color: '#ffb300' }} />,
+                }[skillCategory] || <BuildIcon sx={{ color: '#ffb300' }} />;
+
+                return (
+                  <React.Fragment key={index}>
+                    <ListItem
+                      sx={{
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 179, 0, 0.3)',
+                          transform: 'scale(1.05)',
+                          transition:
+                            'transform 0.3s ease, box-shadow 0.3s ease',
+                        },
+                      }}
+                    >
+                      <ListItemIcon>{icon}</ListItemIcon>
+                      <ListItemText
+                        primary={skillCategory}
+                        secondary={
+                          <Typography
+                            component="span"
+                            sx={{
+                              whiteSpace: 'pre-line',
+                              transition: 'all 0.3s ease-in-out',
+                            }}
+                          >
+                            {skills}
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                    {index < Object.keys(technicalSkills).length - 1 && (
+                      <Divider />
+                    )}
+                  </React.Fragment>
+                );
+              },
+            )}
+          </List>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
+
+Skills.propTypes = {
+  data: PropTypes.any,
+};
