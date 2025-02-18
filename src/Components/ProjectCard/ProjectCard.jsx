@@ -18,7 +18,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import PropTypes from 'prop-types';
 
 const ExpandMore = styled((props) => {
-  const {  ...other } = props;
+  const { ...other } = props;
   return <IconButton {...other} />;
 })(({ theme }) => ({
   marginLeft: 'auto',
@@ -48,7 +48,7 @@ export default function ProjectCard({
   };
 
   const handleImageError = () => {
-    setIsLoading(false); 
+    setIsLoading(false);
   };
 
   info = Array.isArray(info) ? info : [];
@@ -106,12 +106,15 @@ export default function ProjectCard({
       <CardMedia
         component="img"
         height="194"
+        width="194"
         image={image || 'https://via.placeholder.com/345x194?text=No+Image'}
         alt={name}
         onLoad={handleImageLoad}
         onError={handleImageError}
         sx={{
           display: isLoading ? 'none' : 'block',
+          objectFit: 'cover',
+          margin: '0 auto',
         }}
       />
       <CardContent>
