@@ -1,18 +1,20 @@
-import Box from '@mui/material/Box';
 import * as React from 'react';
+import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import TimelineDot from '@mui/lab/TimelineDot';
-import WorkIcon from '@mui/icons-material/Work';
 import Typography from '@mui/material/Typography';
+
+// MUI Icons
+import WorkIcon from '@mui/icons-material/Work';
 
 export default function Work({ data }) {
   const userData = data?.data?.[0] || {};
   const work = Array.isArray(userData?.work) ? userData.work : [];
-    
+
   return (
     <>
       <Box mb={3}>
