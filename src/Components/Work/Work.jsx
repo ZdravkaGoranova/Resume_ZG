@@ -25,7 +25,15 @@ export default function Work({ data }) {
         {work.length > 0 ? (
           work.map((job, index) => (
             <React.Fragment key={index}>
-              <ListItem alignItems="flex-start">
+              <ListItem
+                alignItems="flex-start"
+                sx={{
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  },
+                }}
+              >
                 <TimelineDot color="primary" variant="outlined" sx={{ mr: 2 }}>
                   <WorkIcon />
                 </TimelineDot>
