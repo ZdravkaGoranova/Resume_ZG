@@ -21,13 +21,13 @@ import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
 
 import Footer from './Components/Footer/Footer.jsx';
 import Home from './Components/Home/Home.jsx';
-import About from './Components/About/About.jsx';
 import Projects from './Components/Projects/Projects.jsx';
 import NotFound from './Components/NotFound/NotFound.jsx';
 import CustomThemeSwitcher from './Components/CustomThemeSwitcher/CustomThemeSwitcher.jsx';
 import Contact from './Components/Contact/Contact.jsx';
 import Skills from './Components/Skills/Skills.jsx';
 import Education from './Components/Education/Education.jsx';
+import Work from './Components/Work/Work.jsx';
 
 function App(props) {
   const { window } = props;
@@ -46,10 +46,10 @@ function App(props) {
     },
     { kind: 'header', title: 'More information' },
     {
-      title: 'About',
-      segment: 'about',
+      title: 'Work',
+      segment: 'work',
       icon: <PersonRoundedIcon />,
-      homeUrl: '/about',
+      homeUrl: '/work',
     },
     {
       title: 'Education',
@@ -97,7 +97,7 @@ function App(props) {
               display: 'inline-block',
               color: mode === 'light' ? '#797979' : '#fff',
               fontFamily: 'Russo One, sans-serif',
-              letterSpacing:'1px'
+              letterSpacing: '1px',
             }}
           >
             <span style={{ color: '#FFBF00', fontWeight: 'bold' }}>P</span>
@@ -135,7 +135,7 @@ function App(props) {
 
           <Routes>
             <Route path="/" element={<Home data={data} />} />
-            <Route path="/about" element={<About data={data} />} />
+            <Route path="/work" element={<Work data={data} />} />
             <Route path="/projects" element={<Projects data={data} />} />
             <Route path="/contact" element={<Contact data={data} />} />
             <Route path="/education" element={<Education data={data} />} />
