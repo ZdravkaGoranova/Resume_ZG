@@ -13,8 +13,13 @@ export default function Projects({ data }) {
 
   return (
     <>
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <Box mb={3}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        sx={{ maxWidth: 1200, mx: 'auto', px: 2, py: 4 }}
+      >
+        <Box mb={3} textAlign="center">
           <h1>
             PERSONAL <span style={{ color: '#ffc134' }}>PROJECTS</span>
           </h1>
@@ -23,7 +28,8 @@ export default function Projects({ data }) {
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
+          justifyContent="center"
+          alignItems="stretch"
           marginBottom={1}
         >
           {projects.length > 0 ? (
