@@ -48,9 +48,18 @@ export default function Skills({ data }) {
           S<span style={{ color: '#ffc134' }}>kills</span>
         </h1>
       </Box>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} sx={{ alignItems: 'stretch' }}>
         {/* Soft Skills */}
-        <Grid item xs={12} md={6}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
           <Typography
             variant="h5"
             sx={{
@@ -58,11 +67,12 @@ export default function Skills({ data }) {
               color: '#ffc134',
               mb: 2,
               fontFamily: 'Russo One, sans-serif',
+              textAlign: 'center',
             }}
           >
             Soft Skills
           </Typography>
-          <List>
+          <List sx={{ flexGrow: 1 }}>
             {softSkills.map((skill, index) => (
               <React.Fragment key={index}>
                 <ListItem
@@ -86,7 +96,16 @@ export default function Skills({ data }) {
         </Grid>
 
         {/* Technical Skills */}
-        <Grid item xs={12} md={6}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
           <Typography
             variant="h5"
             sx={{
@@ -94,11 +113,12 @@ export default function Skills({ data }) {
               color: '#ffc134',
               mb: 2,
               fontFamily: 'Russo One, sans-serif',
+              textAlign: 'center',
             }}
           >
             Technical Skills
           </Typography>
-          <List>
+          <List sx={{ flexGrow: 1 }}>
             {Object.entries(technicalSkills).map(
               ([category, skills], index) => {
                 const skillCategory = category.trim();
@@ -133,10 +153,7 @@ export default function Skills({ data }) {
                         secondary={
                           <Typography
                             component="span"
-                            sx={{
-                              whiteSpace: 'pre-line',
-                              transition: 'all 0.3s ease-in-out',
-                            }}
+                            sx={{ whiteSpace: 'pre-line' }}
                           >
                             {skills}
                           </Typography>
