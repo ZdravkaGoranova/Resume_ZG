@@ -1,5 +1,5 @@
 {
-  "name": "resume-zg",
+  "name": "client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,6 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "client": "npm run dev --prefix client",
+    "server": "node server/server.js",
     "start": "node server/server.js"
   },
   "dependencies": {
