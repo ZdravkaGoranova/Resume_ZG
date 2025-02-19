@@ -18,6 +18,9 @@ const client = new MongoClient(MONGO_URI, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000,
   },
 });
 
@@ -60,6 +63,11 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Сървърът стартира на http://localhost:${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(`🚀 Сървърът стартира на http://localhost:${PORT}`);
+// });
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(
+    `🚀 Сървърът стартира на http://0.0.0.0:${PORT}/ http://localhost:${PORT}`,
+  );
 });
