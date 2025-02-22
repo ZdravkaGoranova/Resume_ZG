@@ -96,8 +96,6 @@ function App(props) {
         console.error('Error fetching data: ', error);
       }
     };
-
-    
     useEffect(() => {
       fetchData();
     }, []);
