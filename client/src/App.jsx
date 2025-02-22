@@ -5,7 +5,7 @@ import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 
 import { useEffect, useState } from 'react';
-import { getData } from './api.js';
+// import { getData } from './api.js';
 import { ThemeContext } from './ThemeContext.jsx';
 
 import PropTypes from 'prop-types';
@@ -35,6 +35,7 @@ function App(props) {
   const demoWindow = window !== undefined ? window() : undefined;
   const { mode } = useContext(ThemeContext);
   const [data, setData] = useState(null);
+  const url = 'https://backend-portfolio-zg.onrender.com/'; 
 
   const NAVIGATION = [
     { kind: 'header', title: 'Main items' },
@@ -77,11 +78,29 @@ function App(props) {
     },
   ];
 
-  useEffect(() => {
-    getData().then((fetchedData) => {
-      setData(fetchedData);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getData().then((fetchedData) => {
+  //     setData(fetchedData);
+  //   });
+  // }, []);
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const fetchedData = await response.json();
+        setData(fetchedData);
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+      }
+    };
+
+    
+    useEffect(() => {
+      fetchData();
+    }, []);
 
   console.log('Current Data:', data);
 
