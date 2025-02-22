@@ -68,7 +68,7 @@ function App(props) {
       title: 'Projects',
       segment: 'projects',
       icon: <FolderSpecialRoundedIcon />,
-      homeUrl: '/projects',
+      homeUrl: '/#/projects',
     },
     {
       segment: 'contact',
