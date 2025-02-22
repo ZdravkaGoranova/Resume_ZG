@@ -43,38 +43,38 @@ function App(props) {
       title: 'Home',
       segment: ' ',
       icon: <HomeRoundedIcon />,
-      homeUrl: '/#/',
+      homeUrl: '/',
     },
     { kind: 'header', title: 'More information' },
     {
       title: 'Work',
       segment: 'work',
       icon: <PersonRoundedIcon />,
-      homeUrl: '/#/work',
+      homeUrl: '/work',
     },
     {
       title: 'Education',
       segment: 'education',
       icon: <SchoolRoundedIcon />,
-      homeUrl: '/#/education',
+      homeUrl: '/education',
     },
     {
       title: 'Skills',
       segment: 'skills',
       icon: <SettingsRoundedIcon />,
-      homeUrl: '/#/skills',
+      homeUrl: '/skills',
     },
     {
       title: 'Projects',
       segment: 'projects',
       icon: <FolderSpecialRoundedIcon />,
-      homeUrl: '/#/projects',
+      homeUrl: '/projects',
     },
     {
       segment: 'contact',
       title: 'Contact',
       icon: <LocalPhoneRoundedIcon />,
-      homeUrl: '/#/contact',
+      homeUrl: '/contact',
     },
   ];
 
@@ -145,15 +145,23 @@ function App(props) {
             width: '100%',
           }}
         >
-          <Routes>
-            <Route path="/#/" element={<Home data={data} />} />
-            <Route path="/#/work" element={<Work data={data} />} />
-            <Route path="/#/projects" element={<Projects data={data} />} />
-            <Route path="/#/contact" element={<Contact data={data} />} />
-            <Route path="/#/education" element={<Education data={data} />} />
-            <Route path="/#/skills" element={<Skills data={data} />} />
+          {/* <div>
+            <h1>MongoDB Connected</h1>
+            <p>{data ? JSON.stringify(data) : 'Loading...'}</p>
+          </div> */}
 
-            <Route path="*" element={<NotFound data={data} />} />
+          <Routes>
+            <Route exact path="/" element={<Home data={data} />} />
+            <Route exact path="/work" element={<Work data={data} />} />
+            <Route exact path="/projects" element={<Projects data={data} />} />
+            <Route exact path="/contact" element={<Contact data={data} />} />
+            <Route
+              exact
+              path="/education"
+              element={<Education data={data} />}
+            />
+            <Route exact path="/skills" element={<Skills data={data} />} />
+            <Route exact path="*" element={<NotFound data={data} />} />
           </Routes>
         </Box>
       </DashboardLayout>
@@ -168,3 +176,236 @@ App.propTypes = {
 };
 
 export default App;
+
+// import * as React from 'react';
+// import { styled, useTheme } from '@mui/material/styles';
+
+// import Drawer from '@mui/material/Drawer';
+// import MuiAppBar from '@mui/material/AppBar';
+// import Toolbar from '@mui/material/Toolbar';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import List from '@mui/material/List';
+// import Divider from '@mui/material/Divider';
+// import IconButton from '@mui/material/IconButton';
+// import MenuIcon from '@mui/icons-material/Menu';
+// import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+// import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+// import ListItem from '@mui/material/ListItem';
+// import ListItemButton from '@mui/material/ListItemButton';
+// import ListItemIcon from '@mui/material/ListItemIcon';
+// import ListItemText from '@mui/material/ListItemText';
+
+// import LightModeIcon from '@mui/icons-material/LightMode';
+// import DarkModeIcon from '@mui/icons-material/DarkMode';
+
+// const drawerWidth = 240;
+
+// const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+//   ({ theme }) => ({
+//     flexGrow: 1,
+//     padding: theme.spacing(3),
+//     transition: theme.transitions.create('margin', {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.leavingScreen,
+//     }),
+
+//     marginLeft: 0,
+//     position: 'relative',
+//     variants: [
+//       {
+//         props: ({ open }) => open,
+//         style: {
+//           transition: theme.transitions.create('margin', {
+//             easing: theme.transitions.easing.easeOut,
+//             duration: theme.transitions.duration.enteringScreen,
+//           }),
+
+//           marginLeft: -drawerWidth,
+//         },
+//       },
+//     ],
+//   }),
+// );
+
+// const AppBar = styled(MuiAppBar, {
+//   shouldForwardProp: (prop) => prop !== 'open',
+// })(({ theme }) => ({
+//   transition: theme.transitions.create(['margin', 'width'], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   variants: [
+//     {
+//       props: ({ open }) => open,
+//       style: {
+//         width: `calc(100% - ${drawerWidth}px)`,
+//         transition: theme.transitions.create(['margin', 'width'], {
+//           easing: theme.transitions.easing.easeOut,
+//           duration: theme.transitions.duration.enteringScreen,
+//         }),
+//         marginRight: drawerWidth,
+//       },
+//     },
+//   ],
+// }));
+
+// const DrawerHeader = styled('div')(({ theme }) => ({
+//   display: 'flex',
+//   alignItems: 'center',
+//   padding: theme.spacing(0, 1),
+//   ...theme.mixins.toolbar,
+//   justifyContent: 'flex-start',
+// }));
+
+// export default function App(props) {
+//   const { window } = props;
+//   const router = null;
+//   const demoWindow = window !== undefined ? window() : undefined;
+//   const { mode, toggleTheme } = useContext(ThemeContext);
+//   const [data, setData] = useState(null);
+//   const theme = useTheme();
+//   const [open, setOpen] = React.useState(false);
+
+//   const handleDrawerOpen = () => {
+//     setOpen(true);
+//   };
+
+//   const handleDrawerClose = () => {
+//     setOpen(false);
+//   };
+
+//   useEffect(() => {
+//     getData().then((fetchedData) => {
+//       setData(fetchedData);
+//     });
+//   }, []);
+
+//   console.log('Current Data:', data);
+
+//   return (
+//     <>
+//       <Box
+//         sx={{
+//           display: 'flex',
+//           width: '100%',
+//           maxWidth: '100vw',
+//           overflowX: 'hidden',
+//         }}
+//         router={router}
+//         window={demoWindow}
+//       >
+//         <CssBaseline />
+//         <AppBar
+//           position="fixed"
+//           open={open}
+//           sx={{ backgroundColor: theme.palette.background.paper }}
+//         >
+//           <Toolbar>
+//             <Typography
+//               variant="h6"
+//               noWrap
+//               sx={{
+//                 flexGrow: 1,
+//                 cursor: 'pointer',
+//                 color: '#fff',
+//               }}
+//               component="div"
+//             >
+//               <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+//                 <span
+//                   style={{
+//                     color: mode === 'light' ? 'black' : '#FFD700',
+//                     fontWeight: 'bold',
+//                   }}
+//                 >
+//                   P
+//                 </span>
+//                 ortfolio
+//                 <span
+//                   style={{
+//                     color: mode === 'light' ? 'black' : '#FFD700',
+//                     fontWeight: 'bold',
+//                   }}
+//                 >
+//                   Z
+//                 </span>
+//                 G
+//               </Link>
+//             </Typography>
+
+//             <IconButton
+//               color="inherit"
+//               onClick={toggleTheme}
+//               sx={{ marginRight: 2 }}
+//             >
+//               {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
+//             </IconButton>
+
+//             <IconButton
+//               color="inherit"
+//               aria-label="open drawer"
+//               edge="end"
+//               onClick={handleDrawerOpen}
+//               sx={[open && { display: 'none' }]}
+//             >
+//               <MenuIcon />
+//             </IconButton>
+//           </Toolbar>
+//         </AppBar>
+//         <Main open={open}>
+//           <DrawerHeader sx={{ marginBottom: 2 }} />
+//         </Main>
+//         <Drawer
+//           sx={{
+//             width: drawerWidth,
+//             flexShrink: 0,
+//             '& .MuiDrawer-paper': {
+//               width: drawerWidth,
+//             },
+//           }}
+//           variant="persistent"
+//           anchor="right"
+//           open={open}
+//         >
+//           <DrawerHeader>
+//             <IconButton onClick={handleDrawerClose}>
+//               {theme.direction === 'rtl' ? (
+//                 <ChevronLeftIcon />
+//               ) : (
+//                 <ChevronRightIcon />
+//               )}
+//             </IconButton>
+//           </DrawerHeader>
+//           <Divider />
+//           <List>
+//             {NAVIGATION.map((item, index) => {
+//               if (item.kind === 'header') return null;
+//               return (
+//                 <ListItem key={index} disablePadding>
+//                   <ListItemButton component="a" href={item.homeUrl}>
+//                     <ListItemIcon>{item.icon}</ListItemIcon>
+//                     <ListItemText primary={item.title} />
+//                   </ListItemButton>
+//                 </ListItem>
+//               );
+//             })}
+//           </List>
+//         </Drawer>
+
+//         <Routes>
+//           <Route path="/" element={<Home data={data} />} />
+//           <Route path="/about" element={<About data={data} />} />
+//           <Route path="/projects" element={<Projects data={data} />} />
+//           <Route path="/contact" element={<Contact data={data} />} />
+//           <Route path="/education" element={<Education data={data} />} />
+//           <Route path="/skills" element={<Skills data={data} />} />
+//           <Route path="*" element={<NotFound data={data} />} />
+//         </Routes>
+//       </Box>
+//       <Footer data={data} />
+//     </>
+//   );
+// }
+// App.propTypes = {
+//   window: PropTypes.func,
+// };
