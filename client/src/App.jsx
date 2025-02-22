@@ -37,6 +37,7 @@ function App(props) {
   const [data, setData] = useState(null);
   const url = 'https://backend-portfolio-zg.onrender.com/';
 
+
   const NAVIGATION = [
     { kind: 'header', title: 'Main items' },
     {
@@ -50,7 +51,7 @@ function App(props) {
       title: 'Work',
       segment: 'work',
       icon: <PersonRoundedIcon />,
-      homeUrl: '#/work',
+      homeUrl: '/work',
     },
     {
       title: 'Education',
@@ -68,7 +69,7 @@ function App(props) {
       title: 'Projects',
       segment: 'projects',
       icon: <FolderSpecialRoundedIcon />,
-      homeUrl: '#/projects',
+      homeUrl: '/projects',
     },
     {
       segment: 'contact',
@@ -145,19 +146,14 @@ function App(props) {
             width: '100%',
           }}
         >
-         
           <Routes>
-            <Route exact path="/" element={<Home data={data} />} />
-            <Route exact path="/work" element={<Work data={data} />} />
-            <Route exact path="/projects" element={<Projects data={data} />} />
-            <Route exact path="/contact" element={<Contact data={data} />} />
-            <Route
-              exact
-              path="/education"
-              element={<Education data={data} />}
-            />
-            <Route exact path="/skills" element={<Skills data={data} />} />
-            <Route exact path="*" element={<NotFound data={data} />} />
+            <Route path="/" element={<Home data={data} />} />
+            <Route path="work" element={<Work data={data} />} />
+            <Route path="projects" element={<Projects data={data} />} />
+            <Route path="contact" element={<Contact data={data} />} />
+            <Route path="education" element={<Education data={data} />} />
+            <Route path="skills" element={<Skills data={data} />} />
+            <Route path="*" element={<NotFound data={data} />} />
           </Routes>
         </Box>
       </DashboardLayout>
