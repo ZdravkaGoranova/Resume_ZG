@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext.jsx';
 
+
 export default function Education({ data }) {
   const userData = data?.data?.[0] || {};
   const { mode } = useContext(ThemeContext);
@@ -27,37 +28,34 @@ export default function Education({ data }) {
 
   return (
     <>
-      <Box mb={3}>
-        <h1>
+      <Box mb={3} textAlign="center">
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 'bold',
+            fontFamily: 'Russo One, sans-serif',
+            color: 'black',
+            fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
+          }}
+        >
           E<span style={{ color: '#ffc134' }}>DUCATION</span>
-        </h1>
+        </Typography>
       </Box>
+
       <Timeline position="alternate">
         {education.length > 0 ? (
           education.map(
             (education, index) =>
               education.name && (
-                <TimelineItem
-                  key={index}
-                  sx={{
-                    '&:hover': {
-                      transform: 'scale(1.05)',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    },
-                  }}
-                >
+                <TimelineItem key={index}>
                   <TimelineOppositeContent
-                    sx={{
-                      fontFamily: 'Russo One, sans-serif',
-                      fontWeight: 'bold',
-                      color: textColor,
-                    }}
+                    sx={{ m: 'auto 0' }}
                     align="right"
-                    variant="p"
+                    variant="body2"
+                    color="text.secondary"
                   >
                     {education.date}
                   </TimelineOppositeContent>
-
                   <TimelineSeparator>
                     <TimelineConnector />
                     <TimelineDot color="primary" variant="outlined">
@@ -65,10 +63,9 @@ export default function Education({ data }) {
                     </TimelineDot>
                     <TimelineConnector />
                   </TimelineSeparator>
-
                   <TimelineContent sx={{ py: '12px', px: 2 }}>
                     <Typography
-                      variant="h5"
+                      variant="h6"
                       component="span"
                       sx={{
                         color: '#ffc134',
@@ -78,14 +75,23 @@ export default function Education({ data }) {
                     >
                       {education.name}
                     </Typography>
-                    <Typography variant="h6">{education.university}</Typography>
-                    <Typography variant="h6">{education.city} </Typography>
+                    <Typography> {education.university}</Typography>
+                    <Typography> {education.city}</Typography>
                   </TimelineContent>
                 </TimelineItem>
               ),
           )
         ) : (
-          <h2>No education found.</h2>
+          <Typography
+            variant="h6"
+            sx={{
+              textAlign: 'center',
+              fontSize: { xs: '1rem', sm: '1.3rem', md: '1.5rem' },
+              color: textColor,
+            }}
+          >
+            No education found.
+          </Typography>
         )}
       </Timeline>
     </>
