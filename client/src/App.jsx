@@ -50,7 +50,7 @@ function App(props) {
       title: 'Work',
       segment: 'work',
       icon: <PersonRoundedIcon />,
-      homeUrl: '/work',
+      homeUrl: '#/work',
     },
     {
       title: 'Education',
@@ -68,7 +68,7 @@ function App(props) {
       title: 'Projects',
       segment: 'projects',
       icon: <FolderSpecialRoundedIcon />,
-      homeUrl: '/#/projects',
+      homeUrl: '#/projects',
     },
     {
       segment: 'contact',
