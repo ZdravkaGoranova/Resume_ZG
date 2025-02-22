@@ -56,13 +56,13 @@ function App(props) {
       title: 'Education',
       segment: 'education',
       icon: <SchoolRoundedIcon />,
-      homeUrl: '/education',
+      homeUrl: '#/education',
     },
     {
       title: 'Skills',
       segment: 'skills',
       icon: <SettingsRoundedIcon />,
-      homeUrl: '/skills',
+      homeUrl: '#/skills',
     },
     {
       title: 'Projects',
@@ -74,7 +74,7 @@ function App(props) {
       segment: 'contact',
       title: 'Contact',
       icon: <LocalPhoneRoundedIcon />,
-      homeUrl: '/contact',
+      homeUrl: '#/contact',
     },
   ];
 
@@ -151,17 +151,17 @@ function App(props) {
           </div> */}
 
           <Routes>
-            <Route exact path="/" element={<Home data={data} />} />
-            <Route exact path="/work" element={<Work data={data} />} />
-            <Route exact path="/projects" element={<Projects data={data} />} />
-            <Route exact path="/contact" element={<Contact data={data} />} />
+            <Route  path="/" element={<Home data={data} />} />
+            <Route  path="/work" element={<Work data={data} />} />
+            <Route  path="/projects" element={<Projects data={data} />} />
+            <Route  path="/contact" element={<Contact data={data} />} />
             <Route
-              exact
+              
               path="/education"
               element={<Education data={data} />}
             />
-            <Route exact path="/skills" element={<Skills data={data} />} />
-            <Route exact path="*" element={<NotFound data={data} />} />
+            <Route  path="/skills" element={<Skills data={data} />} />
+            <Route  path="*" element={<NotFound data={data} />} />
           </Routes>
         </Box>
       </DashboardLayout>
