@@ -37,46 +37,47 @@ function App(props) {
   const [data, setData] = useState(null);
   const url = 'https://backend-portfolio-zg.onrender.com/';
 
-  const NAVIGATION = [
-    { kind: 'header', title: 'Main items' },
-    {
-      title: 'Home',
-      segment: ' ',
-      icon: <HomeRoundedIcon />,
-      homeUrl: '/',
-    },
-    { kind: 'header', title: 'More information' },
-    {
-      title: 'Work',
-      segment: 'work',
-      icon: <PersonRoundedIcon />,
-      homeUrl: '#/work',
-    },
-    {
-      title: 'Education',
-      segment: 'education',
-      icon: <SchoolRoundedIcon />,
-      homeUrl: '#/education',
-    },
-    {
-      title: 'Skills',
-      segment: 'skills',
-      icon: <SettingsRoundedIcon />,
-      homeUrl: '#/skills',
-    },
-    {
-      title: 'Projects',
-      segment: 'projects',
-      icon: <FolderSpecialRoundedIcon />,
-      homeUrl: '#/projects',
-    },
-    {
-      segment: 'contact',
-      title: 'Contact',
-      icon: <LocalPhoneRoundedIcon />,
-      homeUrl: '#/contact',
-    },
-  ];
+const NAVIGATION = [
+  { kind: 'header', title: 'Main items' },
+  {
+    title: 'Home',
+    segment: ' ',
+    icon: <HomeRoundedIcon />,
+    homeUrl: '/', 
+  },
+  { kind: 'header', title: 'More information' },
+  {
+    title: 'Work',
+    segment: 'work',
+    icon: <PersonRoundedIcon />,
+    homeUrl: '/work', 
+  },
+  {
+    title: 'Education',
+    segment: 'education',
+    icon: <SchoolRoundedIcon />,
+    homeUrl: '/education', 
+  },
+  {
+    title: 'Skills',
+    segment: 'skills',
+    icon: <SettingsRoundedIcon />,
+    homeUrl: '/skills', 
+  },
+  {
+    title: 'Projects',
+    segment: 'projects',
+    icon: <FolderSpecialRoundedIcon />,
+    homeUrl: '/projects', 
+  },
+  {
+    segment: 'contact',
+    title: 'Contact',
+    icon: <LocalPhoneRoundedIcon />,
+    homeUrl: '/contact', 
+  },
+];
+
 
   // useEffect(() => {
   //   getData().then((fetchedData) => {
@@ -151,17 +152,13 @@ function App(props) {
           </div> */}
 
           <Routes>
-            <Route  path="/" element={<Home data={data} />} />
-            <Route  path="/work" element={<Work data={data} />} />
-            <Route  path="/projects" element={<Projects data={data} />} />
-            <Route  path="/contact" element={<Contact data={data} />} />
-            <Route
-              
-              path="/education"
-              element={<Education data={data} />}
-            />
-            <Route  path="/skills" element={<Skills data={data} />} />
-            <Route  path="*" element={<NotFound data={data} />} />
+            <Route path="/" element={<Home />} />
+            <Route path="work" element={<Work />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="education" element={<Education />} />
+            <Route path="skills" element={<Skills />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Box>
       </DashboardLayout>
