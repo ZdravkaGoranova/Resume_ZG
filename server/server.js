@@ -2,12 +2,17 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/Cluster0';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Middleware
 app.use(cors());
@@ -36,10 +41,9 @@ async function run() {
       .collection('ZdravkaGoranova')
       .find()
       .toArray();
-
-    console.log('!!!', data);
+    console.log('Data:', data);
   } catch (error) {
-    console.error('Не може да се свърже с MongoDB:', error);
+    console.error('Cannot connect to MongoDB:', error);
   }
 }
 run().catch(console.dir);
@@ -51,23 +55,22 @@ app.get('/', async (req, res) => {
       .collection('ZdravkaGoranova')
       .find()
       .toArray();
-    console.log('Данни, които се изпращат:', data);
+    console.log('Data being sent:', data);
 
-    res.json({ message: 'Сървърът работи 🚀', data });
+    res.json({ message: 'Server is running 🚀', data });
   } catch (error) {
-    console.error('Грешка при извличането на данни:', error);
+    console.error('Error fetching data:', error);
     res.status(500).json({
-      message: 'Грешка при извличането на данни от MongoDB.',
+      message: 'Error fetching data from MongoDB.',
       error: error.message,
     });
   }
 });
 
-// app.listen(PORT, () => {
-//   console.log(`🚀 Сървърът стартира на http://localhost:${PORT}`);
-// });
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, 'dist', 'index.html'));
+});
+
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(
-    `🚀 Сървърът стартира на http://0.0.0.0:${PORT}/ http://localhost:${PORT}`,
-  );
+  console.log(`🚀 Server running at http://localhost:${PORT}/`);
 });
