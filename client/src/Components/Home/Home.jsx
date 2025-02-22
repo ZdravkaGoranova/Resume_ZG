@@ -32,8 +32,8 @@ export default function Home({ data }) {
         alt="Zdravka Goranova"
         src="/image-zdravka-goranova.png"
         sx={{
-          width: 350,
-          height: 350,
+          width: 300,
+          height: 300,
           borderRadius: '50%',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
           border: '3px solid #ffc134',
@@ -76,7 +76,7 @@ export default function Home({ data }) {
           <span style={{ color: '#ffc134' }}>
             {userData?.name?.slice(0, 7) || 'Loading...'}
           </span>
-          <span style={{ color: 'white' }}>
+          <span style={{ color: isDarkMode ? 'white' : '#666' }}>
             {userData?.name?.slice(7) || ''}
           </span>
         </Typography>
