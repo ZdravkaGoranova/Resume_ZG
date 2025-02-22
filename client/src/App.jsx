@@ -145,8 +145,8 @@ function App(props) {
             width: '100%',
           }}
         >
-       
           <Routes>
+            <Route path="/#/" element={<Home data={data} />} />
             <Route path="/#/work" element={<Work data={data} />} />
             <Route path="/#/projects" element={<Projects data={data} />} />
             <Route path="/#/contact" element={<Contact data={data} />} />
