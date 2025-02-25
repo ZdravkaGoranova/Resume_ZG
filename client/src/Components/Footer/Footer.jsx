@@ -1,89 +1,62 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../../ThemeContext';
+import React from 'react';
+import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import {
-  Box,
-  Typography,
-  BottomNavigation,
-  BottomNavigationAction,
-} from '@mui/material';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
-import { RiMailSendLine } from 'react-icons/ri';
 
-const Footer = ({ data }) => {
-  const { mode } = useContext(ThemeContext);
-  const isDarkMode = mode === 'dark';
+import Box from '@mui/material/Box';
+
+import Link from '@mui/material/Link';
+
+export default function Contact({ data }) {
   const userData = data?.data?.[0] || {};
+
   return (
-    <footer>
+    <>
+      {/* Footer */}
       <Box
-        display="flex"
-        flexDirection="column"
-        gap="10px"
-        justifyContent="center"
-        mt={0}
-        pt={0}
-        borderTop={1}
-        borderColor={
-          isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-        }
-        textAlign="center"
+        sx={{
+          bgcolor: '#333',
+          color: '#fff',
+          textAlign: 'center',
+          padding: '20px',
+          position: 'relative',
+          bottom: 0,
+          width: '100%',
+        }}
       >
-        <Box display="flex" justifyContent="center" paddingTop="10px">
-          <BottomNavigation
-            showLabels
-            // value={value}
-            // onChange={(event, newValue) => setValue(newValue)}
-            sx={{ background: 'none' }}
-          >
-            <BottomNavigationAction
-              label="Github"
-              icon={<FaGithub />}
-              component="a"
-              href={userData?.contacts?.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-
-            <BottomNavigationAction
-              label="Mail"
-              icon={<RiMailSendLine />}
-              component="a"
-              href={`mailto:${userData?.contacts?.mail}`}
-            />
-
-            <BottomNavigationAction
-              label="LinkedIn"
-              icon={<FaLinkedin />}
-              component="a"
-              href={userData?.contacts?.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-          </BottomNavigation>
-        </Box>
-
-        <Typography
-          paddingBottom="20px"
-          variant="body2"
-          color={isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)'}
-          label="LinkedIn"
-          icon={<FaLinkedin />}
-          // component="a"
-          // href="https://www.linkedin.com/in/zdravka-goranova/"
-          // target="_blank"
-          // rel="noopener noreferrer"
-        >
-          Copyright © {new Date().getFullYear()} Zdravka Goranova. All rights
+        <Typography variant="body2">
+          &copy; {new Date().getFullYear()} Zdravka Goranova. All rights
           reserved.
         </Typography>
+        <Box sx={{ mt: 1 }}>
+          <Link
+            href={userData?.contacts?.linkedin}
+            target="_blank"
+            sx={{ color: '#ffc134', mx: 1 }}
+          >
+            LinkedIn
+          </Link>
+          |
+          <Link
+            href={userData?.contacts?.github}
+            target="_blank"
+            sx={{ color: '#ffc134', mx: 1 }}
+          >
+            GitHub
+          </Link>
+          |
+          <Link
+            href={`mailto:${userData?.contacts?.mail}`}
+            target="_blank"
+            sx={{ color: '#ffc134', mx: 1 }}
+          >
+            Mail
+          </Link>
+        </Box>
       </Box>
-    </footer>
+    </>
   );
-};
+}
 
-export default Footer;
-
-Footer.propTypes = {
+Contact.propTypes = {
   data: PropTypes.any,
 };
