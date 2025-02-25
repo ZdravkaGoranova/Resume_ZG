@@ -28,6 +28,7 @@ import Contact from './Components/Contact/Contact.jsx';
 import Skills from './Components/Skills/Skills.jsx';
 import Education from './Components/Education/Education.jsx';
 import Work from './Components/Work/Work.jsx';
+import Loading from './Components/Loading/Loading.jsx';
 
 function App(props) {
   const { window } = props;
@@ -36,7 +37,6 @@ function App(props) {
   const { mode } = useContext(ThemeContext);
   const [data, setData] = useState(null);
   const url = 'https://backend-portfolio-zg.onrender.com/';
-
 
   const NAVIGATION = [
     { kind: 'header', title: 'Main items' },
@@ -146,15 +146,19 @@ function App(props) {
             width: '100%',
           }}
         >
-          <Routes>
-            <Route path="/" element={<Home data={data} />} />
-            <Route path="work" element={<Work data={data} />} />
-            <Route path="projects" element={<Projects data={data} />} />
-            <Route path="contact" element={<Contact data={data} />} />
-            <Route path="education" element={<Education data={data} />} />
-            <Route path="skills" element={<Skills data={data} />} />
-            <Route path="*" element={<NotFound data={data} />} />
-          </Routes>
+          {data === null ? (
+            <Loading />
+          ) : (
+            <Routes>
+              <Route path="/" element={<Home data={data} />} />
+              <Route path="work" element={<Work data={data} />} />
+              <Route path="projects" element={<Projects data={data} />} />
+              <Route path="contact" element={<Contact data={data} />} />
+              <Route path="education" element={<Education data={data} />} />
+              <Route path="skills" element={<Skills data={data} />} />
+              <Route path="*" element={<NotFound data={data} />} />
+            </Routes>
+          )}
         </Box>
       </DashboardLayout>
 
