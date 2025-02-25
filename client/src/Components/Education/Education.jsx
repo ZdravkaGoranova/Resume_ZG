@@ -47,7 +47,15 @@ export default function Education({ data }) {
           education.map(
             (education, index) =>
               education.name && (
-                <TimelineItem key={index}>
+                <TimelineItem
+                  key={index}
+                  sx={{
+                    '&:hover': {
+                      transform: 'scale(1.05)',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    },
+                  }}
+                >
                   <TimelineOppositeContent
                     sx={{ m: 'auto 0' }}
                     align="right"
