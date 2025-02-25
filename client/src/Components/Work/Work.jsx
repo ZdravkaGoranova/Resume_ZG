@@ -8,17 +8,26 @@ import ListItemText from '@mui/material/ListItemText';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Typography from '@mui/material/Typography';
 
-// MUI Icons
+import { useContext } from 'react';
+import { ThemeContext } from '../../ThemeContext.jsx';
+
 import WorkIcon from '@mui/icons-material/Work';
 
 export default function Work({ data }) {
   const userData = data?.data?.[0] || {};
   const work = Array.isArray(userData?.work) ? userData.work : [];
-
+  const { mode } = useContext(ThemeContext);
   return (
     <>
-      <Box mb={3}>
-        <h1>
+      <Box
+        mb={6}
+        sx={{
+          borderBottom: '3px solid #ffc134',
+          display: 'inline-block',
+          pb: 1,
+        }}
+      >
+        <h1 style={{ color: mode === 'light' ? '#797979' : '#fff' }}>
           W<span style={{ color: '#ffc134' }}>ORK</span>
         </h1>
       </Box>
