@@ -44,7 +44,6 @@ export default function Contact({ data }) {
             display: 'flex',
             alignItems: 'center',
             mb: 2,
-
             '&:hover': {
               backgroundColor: 'rgba(255, 179, 0, 0.1)',
               transform: 'scale(1.05)',
@@ -53,7 +52,9 @@ export default function Contact({ data }) {
           }}
         >
           <FaPhone style={{ marginRight: 8, color: '#ffc134' }} />
-          <Typography>{contacts.phone}</Typography>
+          <Typography variant="body1" color={mode === 'dark' ? '#fff' : '#000'}>
+            {contacts.phone}
+          </Typography>
         </Box>
 
         {/* Location */}
@@ -70,7 +71,9 @@ export default function Contact({ data }) {
           }}
         >
           <FaMapMarkerAlt style={{ marginRight: 8, color: '#ffc134' }} />
-          <Typography>{contacts.location}</Typography>
+          <Typography variant="body1" color={mode === 'dark' ? '#fff' : '#000'}>
+            {contacts.location}
+          </Typography>
         </Box>
 
         {/* GitHub */}
@@ -98,7 +101,12 @@ export default function Contact({ data }) {
               },
             }}
           >
-            GitHub Profile
+            <Typography
+              variant="body1"
+              color={mode === 'dark' ? '#fff' : '#000'}
+            >
+              GitHub Profile
+            </Typography>
           </Link>
         </Box>
 
@@ -127,7 +135,12 @@ export default function Contact({ data }) {
               },
             }}
           >
-            LinkedIn Profile
+            <Typography
+              variant="body1"
+              color={mode === 'dark' ? '#fff' : '#000'}
+            >
+              LinkedIn Profile
+            </Typography>
           </Link>
         </Box>
 
@@ -154,7 +167,12 @@ export default function Contact({ data }) {
               },
             }}
           >
-            {contacts.mail}
+            <Typography
+              variant="body1"
+              color={mode === 'dark' ? '#fff' : '#000'}
+            >
+              {contacts.mail}
+            </Typography>
           </Link>
         </Box>
       </Box>
