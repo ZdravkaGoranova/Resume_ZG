@@ -18,6 +18,7 @@ import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import FolderSpecialRoundedIcon from '@mui/icons-material/FolderSpecialRounded';
 import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 import Footer from './Components/Footer/Footer.jsx';
 import Home from './Components/Home/Home.jsx';
@@ -29,6 +30,7 @@ import Skills from './Components/Skills/Skills.jsx';
 import Education from './Components/Education/Education.jsx';
 import Work from './Components/Work/Work.jsx';
 import Loading from './Components/Loading/Loading.jsx';
+import Certificates from './Components/Certificates/Certificates.jsx';
 
 function App(props) {
   const { window } = props;
@@ -58,6 +60,13 @@ function App(props) {
       segment: 'education',
       icon: <SchoolRoundedIcon />,
       homeUrl: '/education',
+    },
+
+    {
+      segment: 'certificates',
+      title: 'Certificates',
+      icon: <HistoryEduIcon />,
+      homeUrl: '/certificates',
     },
     {
       title: 'Skills',
@@ -156,6 +165,10 @@ function App(props) {
               <Route path="contact" element={<Contact data={data} />} />
               <Route path="education" element={<Education data={data} />} />
               <Route path="skills" element={<Skills data={data} />} />
+              <Route
+                path="certificates"
+                element={<Certificates data={data} />}
+              />
               <Route path="*" element={<NotFound data={data} />} />
             </Routes>
           )}
