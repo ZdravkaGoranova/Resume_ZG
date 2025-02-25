@@ -14,8 +14,8 @@ export default function Contact({ data }) {
       {/* Footer */}
       <Box
         sx={{
-          bgcolor: '#333',
-          color: '#fff',
+          bgcolor: '#ffc134', // златист фон на футъра
+          color: '#333', // тъмен текст, за да има контраст
           textAlign: 'center',
           padding: '20px',
           position: 'relative',
@@ -23,15 +23,25 @@ export default function Contact({ data }) {
           width: '100%',
         }}
       >
-        <Typography variant="body2">
+        {/* Основният текст */}
+        <Typography variant="body2" sx={{ color: '#333', mb: 2 }}>
           &copy; {new Date().getFullYear()} Zdravka Goranova. All rights
           reserved.
         </Typography>
+
+        {/* Линковете */}
         <Box sx={{ mt: 1 }}>
           <Link
             href={userData?.contacts?.linkedin}
             target="_blank"
-            sx={{ color: '#ffc134', mx: 1 }}
+            sx={{
+              color: '#333', // тъмен цвят на линковете
+              mx: 2, // пространство между линковете
+              textDecoration: 'none', // премахване на подчертаването по подразбиране
+              '&:hover': {
+                color: '#444', // леко тъмно сивкаво при задържане на мишката
+              },
+            }}
           >
             LinkedIn
           </Link>
@@ -39,7 +49,14 @@ export default function Contact({ data }) {
           <Link
             href={userData?.contacts?.github}
             target="_blank"
-            sx={{ color: '#ffc134', mx: 1 }}
+            sx={{
+              color: '#333', // тъмен цвят на линковете
+              mx: 2, // пространство между линковете
+              textDecoration: 'none', // премахване на подчертаването по подразбиране
+              '&:hover': {
+                color: '#444', // леко тъмно сивкаво при задържане на мишката
+              },
+            }}
           >
             GitHub
           </Link>
@@ -47,7 +64,14 @@ export default function Contact({ data }) {
           <Link
             href={`mailto:${userData?.contacts?.mail}`}
             target="_blank"
-            sx={{ color: '#ffc134', mx: 1 }}
+            sx={{
+              color: '#333', // тъмен цвят на линковете
+              mx: 2, // пространство между линковете
+              textDecoration: 'none', // премахване на подчертаването по подразбиране
+              '&:hover': {
+                color: '#444', // леко тъмно сивкаво при задържане на мишката
+              },
+            }}
           >
             Mail
           </Link>
