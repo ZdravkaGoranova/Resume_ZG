@@ -24,6 +24,9 @@ import StorageIcon from '@mui/icons-material/Storage';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
+import { useContext } from 'react';
+import { ThemeContext } from '../../ThemeContext.jsx';
+
 const softSkillIcons = {
   'Logical and Algorithmic Thinking': (
     <PsychologyIcon sx={{ color: '#ffb300' }} />
@@ -40,14 +43,22 @@ export default function Skills({ data }) {
   const userData = data?.data?.[0] || {};
   const softSkills = userData?.softSkills || [];
   const technicalSkills = userData?.technicalSkills?.[0] || {};
-
+  const { mode } = useContext(ThemeContext);
   return (
     <Box sx={{ maxWidth: 1000, mx: 'auto', p: 3 }}>
-      <Box mb={3}>
-        <h1>
-          S<span style={{ color: '#ffc134' }}>kills</span>
+      <Box
+        mb={6}
+        sx={{
+          borderBottom: '3px solid #ffc134',
+          display: 'inline-block',
+          pb: 1,
+        }}
+      >
+        <h1 style={{ color: mode === 'light' ? '#797979' : '#fff' }}>
+          S<span style={{ color: '#ffc134' }}>KILLS</span>
         </h1>
       </Box>
+
       <Grid container spacing={4} sx={{ alignItems: 'stretch' }}>
         {/* Soft Skills */}
         <Grid

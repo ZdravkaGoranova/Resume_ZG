@@ -4,12 +4,13 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid2';
 
+import { useContext } from 'react';
+import { ThemeContext } from '../../ThemeContext.jsx';
+
 export default function Projects({ data }) {
   const userData = data?.data?.[0] || {};
-
+  const { mode } = useContext(ThemeContext);
   const projects = Array.isArray(userData?.projects) ? userData.projects : [];
-
-  console.log('Projects array:', projects);
 
   return (
     <>
@@ -19,9 +20,16 @@ export default function Projects({ data }) {
         alignItems="center"
         sx={{ maxWidth: 1200, mx: 'auto', px: 2, py: 4 }}
       >
-        <Box mb={3} textAlign="center">
-          <h1>
-            PERSONAL <span style={{ color: '#ffc134' }}>PROJECTS</span>
+        <Box
+          mb={6}
+          sx={{
+            borderBottom: '3px solid #ffc134',
+            display: 'inline-block',
+            pb: 1,
+          }}
+        >
+          <h1 style={{ color: mode === 'light' ? '#797979' : '#fff' }}>
+            PERSONAL<span style={{ color: '#ffc134' }}> PROJECTS</span>
           </h1>
         </Box>
 
