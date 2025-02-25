@@ -13,7 +13,6 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext.jsx';
 
-
 export default function Education({ data }) {
   const userData = data?.data?.[0] || {};
   const { mode } = useContext(ThemeContext);
@@ -28,18 +27,17 @@ export default function Education({ data }) {
 
   return (
     <>
-      <Box mb={3} textAlign="center">
-        <Typography
-          variant="h3"
-          sx={{
-            fontWeight: 'bold',
-            fontFamily: 'Russo One, sans-serif',
-            color: 'black',
-            fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
-          }}
-        >
+      <Box
+        mb={6}
+        sx={{
+          borderBottom: '3px solid #ffc134',
+          display: 'inline-block',
+          pb: 1,
+        }}
+      >
+        <h1 style={{ color: mode === 'light' ? '#797979' : '#fff' }}>
           E<span style={{ color: '#ffc134' }}>DUCATION</span>
-        </Typography>
+        </h1>
       </Box>
 
       <Timeline position="alternate">
