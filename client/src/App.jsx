@@ -19,6 +19,7 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import FolderSpecialRoundedIcon from '@mui/icons-material/FolderSpecialRounded';
 import LocalPhoneRoundedIcon from '@mui/icons-material/LocalPhoneRounded';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import PublicIcon from '@mui/icons-material/Public';
 
 import Footer from './Components/Footer/Footer.jsx';
 import Home from './Components/Home/Home.jsx';
@@ -31,6 +32,7 @@ import Education from './Components/Education/Education.jsx';
 import Work from './Components/Work/Work.jsx';
 import Loading from './Components/Loading/Loading.jsx';
 import Certificates from './Components/Certificates/Certificates.jsx';
+import Languages from './Components/Languages/Languages.jsx';
 
 function App(props) {
   const { window } = props;
@@ -73,6 +75,12 @@ function App(props) {
       segment: 'skills',
       icon: <SettingsRoundedIcon />,
       homeUrl: '/skills',
+    },
+    {
+      title: 'Languages',
+      segment: 'languages',
+      icon: <PublicIcon />,
+      homeUrl: '/languages',
     },
     {
       title: 'Projects',
@@ -169,6 +177,7 @@ function App(props) {
                 path="certificates"
                 element={<Certificates data={data} />}
               />
+              <Route path="languages" element={<Languages data={data} />} />
               <Route path="*" element={<NotFound data={data} />} />
             </Routes>
           )}
