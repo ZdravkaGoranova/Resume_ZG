@@ -2,6 +2,7 @@
 
 ## 📌 Project Description
 Resume_ZG is a web application for managing and visualizing resumes. The project is built using React for the client-side and Express.js for the server-side, with MongoDB as the database.
+##### The project is deployed online at [https://portfoliozg.onrender.com/](https://portfoliozg.onrender.com/)
 
 ## 🛠️ Technologies
 The project uses the following technologies:
