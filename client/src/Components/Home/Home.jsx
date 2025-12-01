@@ -116,8 +116,8 @@ export default function Home({ data }) {
           <Button
             variant="contained"
             endIcon={<SystemUpdateAltIcon />}
-            href="/Zdravka_Goranova_Resume_CV.pdf"
-            download="Zdravka_Goranova_Resume_CV.pdf"
+            href="/Resume_Zdravka_Goranova_FRONTEND_DEVELOPER.pdf"
+            download="Resume_Zdravka_Goranova_FRONTEND_DEVELOPER.pdf"
             sx={{
               borderRadius: '20px',
               color: 'white',
