@@ -30,7 +30,7 @@ export default function Home({ data }) {
     >
       <Avatar
         alt="Zdravka Goranova"
-        src="/image-zdravka-goranova.png"
+        src="/new_image_zdravka.png"
         sx={{
           width: 300,
           height: 300,
